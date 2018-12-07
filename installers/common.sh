@@ -121,7 +121,7 @@ function download_latest_files() {
 
     install_log "Cloning latest files from github"
     git clone --depth 1 https://github.com/GigundoAI/raspap-webgui /tmp/raspap-webgui || install_error "Unable to download files from github"
-    sudo mv /tmp/raspap-webgui $webroot_dir || install_error "Unable to move raspap-webgui to web root"
+    sudo mv /tmp/raspap-webgui $webroot_dir || install_error "Unable to move chatterbox-webgui to web root"
 }
 
 # Sets files ownership in web root directory
