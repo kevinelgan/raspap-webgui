@@ -66,12 +66,6 @@ function config_installation() {
     echo "Detected ${version_msg}" 
     echo "Install directory: ${raspap_dir}"
     echo "Lighttpd directory: ${webroot_dir}"
-    echo -n "Complete installation with these values? [y/N]: "
-    read answer
-    if [[ $answer != "y" ]]; then
-        echo "Installation aborted."
-        exit 0
-    fi
 }
 
 # Runs a system software update to make sure we're using all fresh packages
@@ -288,25 +282,19 @@ function optimize_php() {
     sudo cp "$phpcgiconf" "$raspap_dir/backups/php.ini.$datetimephpconf"
     sudo ln -sf "$raspap_dir/backups/php.ini.$datetimephpconf" "$raspap_dir/backups/php.ini"
 
-    echo -n "Enable HttpOnly for session cookies (Recommended)? [Y/n]: "
-    read answer
-    if [ "$answer" != 'n' ] && [ "$answer" != 'N' ]; then
-        echo "Php-cgi enabling session.cookie_httponly."
-        sudo sed -i -E 's/^session\.cookie_httponly\s*=\s*(0|([O|o]ff)|([F|f]alse)|([N|n]o))\s*$/session.cookie_httponly = 1/' "$phpcgiconf"
-    fi
+    echo -n "Enabling HttpOnly for session cookies"
+    echo "Php-cgi enabling session.cookie_httponly."
+    sudo sed -i -E 's/^session\.cookie_httponly\s*=\s*(0|([O|o]ff)|([F|f]alse)|([N|n]o))\s*$/session.cookie_httponly = 1/' "$phpcgiconf"
 
     if [ "$php_package" = "php7.0-cgi" ]; then
-        echo -n "Enable PHP OPCache? [Y/n]: "
-        read answer
-        if [ "$answer" != 'n' ] && [ "$answer" != 'N' ]; then
-            echo "Php-cgi enabling opcache.enable."
-            sudo sed -i -E 's/^;?opcache\.enable\s*=\s*(0|([O|o]ff)|([F|f]alse)|([N|n]o))\s*$/opcache.enable = 1/' "$phpcgiconf"
-            # Make sure opcache extension is turned on.
-            if [ -f "/usr/sbin/phpenmod" ]; then
-                sudo phpenmod opcache
-            else
-                install_warning "phpenmod not found."
-            fi
+        echo "Enabling PHP OPCache"
+        echo "Php-cgi enabling opcache.enable."
+        sudo sed -i -E 's/^;?opcache\.enable\s*=\s*(0|([O|o]ff)|([F|f]alse)|([N|n]o))\s*$/opcache.enable = 1/' "$phpcgiconf"
+        # Make sure opcache extension is turned on.
+        if [ -f "/usr/sbin/phpenmod" ]; then
+            sudo phpenmod opcache
+        else
+            install_warning "phpenmod not found."
         fi
     fi
 }
@@ -314,12 +302,8 @@ function optimize_php() {
 function install_complete() {
     install_log "Installation completed!"
 
-    echo -n "The system needs to be rebooted as a final step. Reboot now? [y/N]: "
-    read answer
-    if [[ $answer != "y" ]]; then
-        echo "Installation reboot aborted."
-        exit 0
-    fi
+    echo "The system needs to be rebooted as a final step."
+
     sudo shutdown -r now || install_error "Unable to execute shutdown"
 }
 
