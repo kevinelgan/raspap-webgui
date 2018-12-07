@@ -296,7 +296,6 @@ function install_complete() {
 
     echo "The system needs to be rebooted as a final step."
 
-    sudo shutdown -r now || install_error "Unable to execute shutdown"
 }
 
 function install_raspap() {
