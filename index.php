@@ -107,7 +107,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-	  <a class="navbar-brand" href="index.php"><?php echo _("RaspAP Wifi Portal"); ?> v<?php echo RASPI_VERSION; ?></a>
+	  <a class="navbar-brand" href="index.php"><?php echo _("Chatterbox Wifi Portal"); ?> v<?php echo RASPI_VERSION; ?></a>
         </div>
         <!-- /.navbar-header -->
 
@@ -175,7 +175,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
         <div class="row">
           <div class="col-lg-12">
             <h1 class="page-header">
-              <img class="logo" src="img/raspAP-logo.png" width="45" height="45">RaspAP
+              <img class="logo" src="img/raspAP-logo.png" width="45" height="45">Chatterbox
             </h1>
           </div>
         </div><!-- /.row -->
