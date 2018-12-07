@@ -46,16 +46,8 @@ function display_welcome() {
     green='\033[1;32m'
 
     echo -e "${raspberry}\n"
-    echo -e " 888888ba                              .d888888   888888ba" 
-    echo -e " 88     8b                            d8     88   88     8b" 
-    echo -e "a88aaaa8P' .d8888b. .d8888b. 88d888b. 88aaaaa88a a88aaaa8P" 
-    echo -e " 88    8b. 88    88 Y8ooooo. 88    88 88     88   88" 
-    echo -e " 88     88 88.  .88       88 88.  .88 88     88   88" 
-    echo -e " dP     dP  88888P8  88888P  88Y888P  88     88   dP" 
-    echo -e "                             88"                             
-    echo -e "                             dP"                             
+    echo -e "CHATTERBOX WIFI WEB GUI SETUP "
     echo -e "${green}"
-    echo -e "The Quick Installer will guide you through a few easy steps\n\n"
 }
 
 ### NOTE: all the below functions are overloadable for system-specific installs
