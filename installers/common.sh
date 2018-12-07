@@ -26,12 +26,12 @@ fi
 
 # Outputs a RaspAP Install log line
 function install_log() {
-    echo -e "\033[1;32mRaspAP Install: $*\033[m"
+    echo -e "\033[1;32mChatterboxAP Install: $*\033[m"
 }
 
 # Outputs a RaspAP Install Error log line and exits with status code 1
 function install_error() {
-    echo -e "\033[1;37;41mRaspAP Install Error: $*\033[m"
+    echo -e "\033[1;37;41mChatterboxAP Install Error: $*\033[m"
     exit 1
 }
 
@@ -83,7 +83,7 @@ function enable_php_lighttpd() {
 
 # Verifies existence and permissions of RaspAP directory
 function create_raspap_directories() {
-    install_log "Creating RaspAP directories"
+    install_log "Creating ChatterboxAP directories"
     if [ -d "$raspap_dir" ]; then
         sudo mv $raspap_dir "$raspap_dir.`date +%F-%R`" || install_error "Unable to move old '$raspap_dir' out of the way"
     fi
